@@ -70,12 +70,15 @@ namespace BancaOOP
             decimal amount = decimal.Parse(Console.ReadLine());
             Console.Write("\nDuration in months: ");
             int duration = int.Parse(Console.ReadLine());
-            Console.Write("\nNumber of installment: ");
-            int installment = int.Parse(Console.ReadLine());
-            loans.Add(new Loan(client, amount, installment, DateOnly.FromDateTime(DateTime.Now), DateOnly.FromDateTime(DateTime.Now.AddMonths(duration))));
+            loans.Add(new Loan(client, amount, DateOnly.FromDateTime(DateTime.Now), DateOnly.FromDateTime(DateTime.Now.AddMonths(duration))));
         }
         
-        
+        public List<Loan>? FindLoans(string fiscalCode)
+            => loans.Where(l => l.AccountHolder.FiscalCode == fiscalCode).ToList();
+
+        public decimal GetClientTotalLoans(string fiscalCode)
+            => loans.Where(l => l.AccountHolder.FiscalCode == fiscalCode).Sum(l => l.Amount);
+
     }
     
 }
