@@ -5,7 +5,6 @@
         public string Name { get; set; }
         public string Surname { get; set; }
         public string FiscalCode { get; set; }
-        public List<Loan> Loans = new List<Loan>();
 
         public Client(string name, string surname, string fiscalCode)
         {
@@ -13,5 +12,6 @@
             Surname = surname;
             FiscalCode = fiscalCode;
         }
+
     }
 }
